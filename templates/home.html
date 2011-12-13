@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <h1>Welcome to White Elephant</h1>
+    {% if results %}
+    <table>
+        <tr>
+            <th>Year</th><th>Giver</th><th>Receiver</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result[0] }}</td>
+            <td>{{ result[1] }}</td>
+            <td>{{ result[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+       You don't have any gift assignments right now. 
+    {% endif %}
+{% endblock %}

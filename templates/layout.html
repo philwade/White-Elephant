@@ -1,0 +1,20 @@
+<!doctype html>
+<title>White Elephant</title>
+<style>
+img#elephant {
+    height:160px;
+}
+#nav {
+    float: right;
+}
+</style>
+<img src="{{ url_for('static', filename='image/white_elephant.png') }}" id="elephant"/>
+<div id="nav">
+    {% if session.logged_in %}
+        <a href="{{ url_for('logout') }}">logout</a>
+    {% endif %}
+</div>
+<div id="content">
+    {% block body %}
+    {% endblock %}
+</div>
