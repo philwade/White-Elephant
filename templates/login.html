@@ -4,8 +4,8 @@
     {% if error %}
         <div class="error">{{ error }}</div>
     {% endif %}
-    <form method="POST" action="{{ url_for('login') }}" id="login_form">
-        <input type="text" name="email"/>
-        <input type="submit"/>
+    <form method="POST" action="{{ url_for('login') }}">
+        <input type="text" name="email" id="login_email"/>
+        <input type="image" src="{{ url_for('static', filename='image/arrow_circle.png') }}" value="Submit" id="sub"/>
     </form>
 {% endblock %}
