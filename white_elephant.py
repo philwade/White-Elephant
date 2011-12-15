@@ -43,6 +43,33 @@ def index():
                                 where match.giver_id=? and giver.id=? and receiver.id=match.receiver_id and year.id=match.year_id order by year.id DESC", [session['id'], session['id']])
     return render_template('home.html', records = records)
 
+@app.route("/admin")
+def admin():
+    return render_template("admin.html")
+
+@app.route("/years", methods=["GET", "POST"])
+def yearList():
+    error = None
+    if not session.get('logged_in') and session.get('admin'):
+        abort(404)
+    years = g.db.execute('select * from year order by id desc')
+    return render_template('years.html', error = error, years = years)
+
+@app.route("/users", methods=["GET", "POST"])
+def userList():
+    error = None
+    if not session.get('logged_in') and session.get('admin'):
+        abort(404)
+    users = g.db.execute('select * from user order by id desc')
+    return render_template('users.html', error = error, users = users)
+
+@app.route("/picks", methods=["GET", "POST"])
+def runPicks():
+    error = None
+    if not session.get('logged_in') and session.get('admin'):
+        abort(404)
+    return render_template('picks.html', error = error)
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     error = None

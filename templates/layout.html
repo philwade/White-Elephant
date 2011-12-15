@@ -33,9 +33,15 @@ img#elephant {
 .error {
     color: #BF3030;
 }
+#nav a.admin_link {
+    color: #269926;
+}
 </style>
 <img src="{{ url_for('static', filename='image/white_elephant.png') }}" id="elephant"/>
 <div id="nav">
+    {% if session.admin %}
+        <a href="{{ url_for('admin') }}" class="admin_link">admin</a>
+    {% endif %}
     {% if session.logged_in %}
         <a href="{{ url_for('logout') }}">logout</a>
     {% endif %}
@@ -44,3 +50,6 @@ img#elephant {
     {% block body %}
     {% endblock %}
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+{% block scripts %}
+{% endblock %}

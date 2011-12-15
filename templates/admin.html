@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <h1>White Elephant Administration</h1>
+    <div id="years">
+    </div>
+    <div id="picks">
+    </div>
+    <div id="users">
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        function loadInterface(url, id)
+        {
+            $.get(url, function(data){ $(id).replaceWith(data); });
+        }
+        $(document).ready(function(){
+            loadInterface("{{ url_for('yearList') }}", '#years');
+            loadInterface("{{ url_for('runPicks') }}", '#picks');
+            loadInterface("{{ url_for('userList') }}", '#users');
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,15 @@
+<div id="years">
+<h2>Years</h2>
+{% if error %}
+    <div class="error">{{ error }}</div>
+{% endif %}
+<table>
+    {% if years %}
+        {% for year in years %}
+            <tr><td>{{ year[1] }}</td></tr>
+        {% endfor %}
+    {% else %}
+        <tr><td>No years exist yet.</td></tr>
+    {% endif %}
+</table>
+</div>

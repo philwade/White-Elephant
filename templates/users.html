@@ -1,0 +1,12 @@
+<div id="users">
+<h2>Users</h2>
+<table>
+    {% if users %}
+        {% for user in users %}
+            <tr>
+                <td>{{ user[1] }}</td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+</table>
+</div>
