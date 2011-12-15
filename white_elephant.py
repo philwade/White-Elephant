@@ -70,6 +70,14 @@ def runPicks():
         abort(404)
     return render_template('picks.html', error = error)
 
+@app.route("/families", methods=["GET", "POST"])
+def familyList():
+    error = None
+    if not session.get('logged_in') and session.get('admin'):
+        abort(404)
+    families = g.db.execute('select * from family order by id desc')
+    return render_template('families.html', error = error, families = families)
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     error = None

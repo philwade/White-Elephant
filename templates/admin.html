@@ -1,12 +1,28 @@
 {% extends 'layout.html' %}
 {% block body %}
     <h1>White Elephant Administration</h1>
-    <div id="years">
-    </div>
-    <div id="picks">
-    </div>
-    <div id="users">
-    </div>
+    <table id="admin_table">
+    <tr>
+        <td>
+            <div id="years">
+            </div>
+        </td>
+        <td>
+            <div id="picks">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="users">
+            </div>
+        </td>
+        <td>
+            <div id="families">
+            </div>
+        </td>
+    </tr>
+    <table>
 {% endblock %}
 {% block scripts %}
     <script>
@@ -18,6 +34,7 @@
             loadInterface("{{ url_for('yearList') }}", '#years');
             loadInterface("{{ url_for('runPicks') }}", '#picks');
             loadInterface("{{ url_for('userList') }}", '#users');
+            loadInterface("{{ url_for('familyList') }}", '#families');
         });
     </script>
 {% endblock %}
