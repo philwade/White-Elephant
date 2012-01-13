@@ -30,6 +30,13 @@
         {
             $.get(url, function(data){ $(id).replaceWith(data); });
         }
+        function postForm(el, id)
+        {
+            form = $(el).parent(".admin_forms");
+            url = $(form).children(".target").val();
+            $.post(url, $(form).serialize(), function(data){ $(id).replaceWith(data); });
+            return false;
+        }
         $(document).ready(function(){
             loadInterface("{{ url_for('yearList') }}", '#years');
             loadInterface("{{ url_for('runPicks') }}", '#picks');

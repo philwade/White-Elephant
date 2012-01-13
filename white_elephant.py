@@ -75,6 +75,11 @@ def familyList():
     error = None
     if not session.get('logged_in') and session.get('admin'):
         abort(404)
+    if request.method == "POST":
+        new_name = request.form['family_name']
+        if new_name:
+            g.db.execute('insert into family values(null, ?)', [new_name])
+            g.db.commit()
     families = g.db.execute('select * from family order by id desc')
     return render_template('families.html', error = error, families = families)
 

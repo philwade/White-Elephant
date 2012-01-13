@@ -5,4 +5,9 @@
             <tr><td>{{ family[1] }}</td></tr>
         {% endfor %}
     </table>
+    <form id="family_post" class="admin_forms">
+        <img src="{{ url_for('static', filename='image/plus.png') }}" style="cursor: pointer; width: 20px; height: 20px;" onclick="postForm(this, '#families'); return false;"/>
+        <input type="text" name="family_name"/>
+        <input type="hidden" class="target" value="{{ url_for('familyList') }}"/>
+    </form>
 </div>
