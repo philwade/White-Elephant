@@ -60,8 +60,16 @@ def userList():
     error = None
     if not session.get('logged_in') and session.get('admin'):
         abort(404)
-    users = g.db.execute('select * from user order by id desc')
-    return render_template('users.html', error = error, users = users)
+    if request.method == "POST":
+        new_user = request.form['user_name']
+        user_family = request.form['user_family']
+        user_email = request.form['user_email']
+        if new_user:
+            g.db.execute('insert into user values(null, ?, ?, 0, ?)', [new_user, user_email, user_family])
+            g.db.commit()
+    users = g.db.execute('select user.name, family.name from user, family where user.family_id=family.id order by user.id desc')
+    families = g.db.execute('select family.name, family.id from family')
+    return render_template('users.html', error = error, users = users, families = families)
 
 @app.route("/picks", methods=["GET", "POST"])
 def runPicks():
