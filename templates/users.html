@@ -11,13 +11,18 @@
 </table>
 <form id="users_post" class="admin_forms">
     <img src="{{ url_for('static', filename='image/plus.png') }}" style="cursor: pointer; width: 20px; height: 20px;" onclick="postForm(this, '#users'); return false;"/>
-    <input type="text" name="user_name"/>
+    <input type="text" name="user_name" class="something" value="(name)"/>
     <select name="user_family">
         {% for family in families %}
             <option value="{{ family[1] }}">{{ family[0] }}</option>
         {% endfor %}
     </select>
-    <input type="text" name="user_email"/>
+    <input type="text" name="user_email" class="something" value="(email)"/>
     <input type="hidden" class="target" value="{{ url_for('userList') }}"/>
 </form>
 </div>
+<script>
+$(document).ready(function(){
+    $('.something').greyHolder();
+});
+</script>

@@ -42,6 +42,11 @@ img#elephant {
 #admin_table td {
     width: 50%;
 }
+
+input.greyHolder {
+    color: grey;
+}
+
 </style>
 <img src="{{ url_for('static', filename='image/white_elephant.png') }}" id="elephant"/>
 <div id="nav">
@@ -57,5 +62,6 @@ img#elephant {
     {% endblock %}
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/greyholder.js') }}"></script>
 {% block scripts %}
 {% endblock %}
